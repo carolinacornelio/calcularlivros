@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="static/img/icon.png" type="image/png">
+    <title>Calculadora de livros</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='dist/css/style.css')}}">
+</head>
+<body>
+    <div class="container">
+        <h1>Calculadora <br> de Livros</h1>
+
+        <form method="POST">
+            <label for="pages">Quantas páginas o livro possui?</label>
+            <input type="number" id="pages" name="pages" required>
+            
+            <label for="days">Em quantos dias você deseja ler?</label>
+            <input type="number" id="days" name="days" required>
+            
+            <label for="startDay">Que dia do mês você vai começar?</label>
+            <input type="number" id="startDay" name="startDay" required>
+            
+            <button type="submit">Calcular</button>
+        </form>
+        
+        {% if start_date %}
+        <div class="results">
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <td>Data de início</td>
+                        <td>{{ start_date }}</td>
+                    </tr>
+                    <tr>
+                        <td>Data do final</td>
+                        <td>{{ end_date }}</td>
+                    </tr>
+                    <tr>
+                        <td>Tempo de leitura</td>
+                        <td>{{ days }} dias</td>
+                    </tr>
+                    <tr>
+                        <td>Páginas por dia</td>
+                        <td>{{ pags_dia }} páginas</td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+                <br>
+                <h3 id="diast">Até que página deve ser lido em cada dia?</h3>
+                <ul id="dias">
+                    {% for entry in reading_schedule %}
+                    <li>Dia {{ entry.date }}: ler até a página {{ entry.page }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
