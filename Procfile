@@ -1,1 +1,1 @@
-web: carolinacornelio app:app
+web: gunicorn app:app
