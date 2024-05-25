@@ -9,9 +9,10 @@ def index():
         pages = int(request.form['pages'])
         days = int(request.form['days'])
         start_day = int(request.form['startDay'])
+        start_month = int(request.form['startMonth'])
         
         today = datetime.today()
-        start_date = datetime(today.year, today.month, start_day)
+        start_date = datetime(today.year, start_month, start_day)
         end_date = start_date + timedelta(days=days-1)
         
         pags_dia = (pages // days) + (1 if pages % days else 0)
