@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %} Resultado {% endblock %}
+
+{% block content %}
+{% if inicio %}
+<div id="alinhe">
+    <span id="voltar" class="material-symbols-outlined" onclick="window.location.href='/';">arrow_back</span>
+    <h1 id="titulo">Cronograma</h1>
+    <span id="livrin" class="material-symbols-outlined"> auto_stories </span>
+</div>
+<div class="results">
+    <div class="table-container">
+        <table>
+            <tr>
+                <td>Data de início</td>
+                <td>{{ inicio }}</td>
+            </tr>
+            <tr>
+                <td>Data do final</td>
+                <td>{{ final }}</td>
+            </tr>
+            <tr>
+                <td>Tempo de leitura</td>
+                <td>{{ dias }} dias</td>
+            </tr>
+            <tr>
+                <td>Páginas por dia</td>
+                <td>{{ pags_dia }} páginas</td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <br>
+        <h3 id="days-t">Até que página deve ser lido em cada dia?</h3>
+        <ul id="days-list">
+            {% for entry in lista %}
+            <li>Dia {{ entry.date }}: ler até a página {{ entry.page }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
+
+</div>
